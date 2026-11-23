@@ -9,20 +9,20 @@ number:
 date:
 consensus: false
 v: 3
-area: art
-workgroup: STIR
+area: "Real-time Applications and Infrastructure"
+workgroup: "Session Initiation Protocol"
 keyword:
  - SIP
  - PASSporT
  - AI preferences
  - call data
 venue:
-  group: stir
-  type: Working Group
-  mail: stir@ietf.org
-  arch: https://mailarchive.ietf.org/arch/browse/stir/
-  github: altanai/draft-sip-passport-aipref
-  latest: https://altanai.github.io/draft-sip-passport-aipref/draft-altanai-sip-passport-aipref.html
+  group: "Session Initiation Protocol"
+  type: "Working Group"
+  mail: "sipcore@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/sipcore"
+  github: "altanai/draft-sip-passport-aipref"
+  latest: "https://altanai.github.io/draft-sip-passport-aipref/draft-altanai-sip-passport-aipref.html"
 
 author:
  -
