@@ -4,16 +4,22 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>TODO - Your title</title>
-<meta content="Your Name Here" name="author">
+<title>Personal Assertion Token (PASSporT) Extension for AI Usage Preferences in SIP Calls</title>
+<meta content="Altanai Bisht" name="author">
 <meta content="
-       TODO Abstract 
+       This document outlines a potential Personal Assertion Token (PASSporT)
+extension for conveying AI usage preferences associated with SIP calls,
+including preferences concerning the use of call data for training large
+language models (LLMs). It explores binding preference information to
+authenticated call identity. This initial discussion outline leaves the
+extension design and verification procedures to be determined (TBD). 
     " name="description">
 <meta content="xml2rfc 3.35.0" name="generator">
-<meta content="next generation" name="keyword">
-<meta content="unicorn" name="keyword">
-<meta content="AI-native" name="keyword">
-<meta content="draft-todo-yourname-protocol-latest" name="ietf.draft">
+<meta content="SIP" name="keyword">
+<meta content="PASSporT" name="keyword">
+<meta content="AI preferences" name="keyword">
+<meta content="call data" name="keyword">
+<meta content="draft-altanai-sip-passport-aipref-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.35.0
     Python 3.14.10
@@ -29,7 +35,7 @@
     requests 2.33.1
     wcwidth 0.9.4
 -->
-<link href="draft-todo-yourname-protocol.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-altanai-sip-passport-aipref.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1042,11 +1048,11 @@ svg {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">TODO - Abbreviation</td>
+<td class="center">AI Preferences in SIP PASSporT</td>
 <td class="right">November 2026</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Here</td>
+<td class="left">Bisht</td>
 <td class="center">Expires 27 May 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1055,9 +1061,9 @@ svg {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">WG Working Group</dd>
+<dd class="workgroup">STIR</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-todo-yourname-protocol-latest</dd>
+<dd class="internet-draft">draft-altanai-sip-passport-aipref-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2026-11-23" class="published">23 November 2026</time>
@@ -1069,16 +1075,21 @@ svg {
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
-      <div class="author-name">Y. N. Here</div>
-<div class="org">Your Organization Here</div>
+      <div class="author-name">A. Bisht</div>
+<div class="org">Cisco Meraki</div>
 </div>
 </dd>
 </dl>
 </div>
-<h1 id="title">TODO - Your title</h1>
+<h1 id="title">Personal Assertion Token (PASSporT) Extension for AI Usage Preferences in SIP Calls</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">TODO Abstract<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document outlines a potential Personal Assertion Token (PASSporT)
+extension for conveying AI usage preferences associated with SIP calls,
+including preferences concerning the use of call data for training large
+language models (LLMs). It explores binding preference information to
+authenticated call identity. This initial discussion outline leaves the
+extension design and verification procedures to be determined (TBD).<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1086,14 +1097,15 @@ svg {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/">https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://altanai.github.io/draft-sip-passport-aipref/draft-altanai-sip-passport-aipref.html">https://altanai.github.io/draft-sip-passport-aipref/draft-altanai-sip-passport-aipref.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-altanai-sip-passport-aipref/">https://datatracker.ietf.org/doc/draft-altanai-sip-passport-aipref/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+        stir Working Group mailing list (<span><a href="mailto:stir@ietf.org">mailto:stir@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/stir/">https://mailarchive.ietf.org/arch/browse/stir/</a></span>.
+        Subscribe at <span><a href="https://www.ietf.org/mailman/listinfo/stir/">https://www.ietf.org/mailman/listinfo/stir/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 <p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        <span><a href="https://github.com/altanai/draft-sip-passport-aipref">https://github.com/altanai/draft-sip-passport-aipref</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1145,24 +1157,79 @@ svg {
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-relationship-to-existing-wo" class="internal xref">Relationship to Existing Work</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-terminology" class="internal xref">Terminology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-overview-of-operation" class="internal xref">Overview of Operation</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-passport-extension" class="internal xref">PASSporT Extension</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-passport-type-and-claim-def" class="internal xref">PASSporT Type and Claim Definitions</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-preference-integrity-and-ca" class="internal xref">Preference Integrity and Call Binding</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-use-in-sip" class="internal xref">Use in SIP</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-authentication-service-beha" class="internal xref">Authentication Service Behavior</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-verification-service-behavi" class="internal xref">Verification Service Behavior</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-preference-updates-and-call" class="internal xref">Preference Updates and Call Transitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-json-web-token-claims" class="internal xref">JSON Web Token Claims</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-personal-assertion-token-pa" class="internal xref">Personal Assertion Token (PASSporT) Extensions</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-privacy-considerations" class="internal xref">Privacy Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-references" class="internal xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+                <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1173,51 +1240,241 @@ svg {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">PASSporT <span>[<a href="#RFC8225" class="cite xref">RFC8225</a>]</span> and the STIR authentication procedures for SIP
+<span>[<a href="#RFC8224" class="cite xref">RFC8224</a>]</span> provide a basis for associating signed information with calls.
+This document explores applying that model to AI usage preferences for
+call data. The proposed extension is outlined in <a href="#extension" class="auto internal xref">Section 4</a>, with
+SIP procedures reserved in <a href="#sip" class="auto internal xref">Section 5</a>.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">TBD: Refine the problem statement, intended status, and initial use cases
+with contributors.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<div id="related-work">
+<section id="section-1.1">
+        <h3 id="name-relationship-to-existing-wo">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-relationship-to-existing-wo" class="section-name selfRef">Relationship to Existing Work</a>
+        </h3>
+<p id="section-1.1-1">AI Preferences for Real-Time Protocol Bindings
+<span>[<a href="#I-D.altanai-aipref-realtime-protocol-bindings" class="cite xref">I-D.altanai-aipref-realtime-protocol-bindings</a>]</span> describes AI Preference
+Tokens (APTs), the SIP <code>AI-Pref</code> header field, SDP bindings, and preference
+updates during a session. This document explores a specific PASSporT
+binding that could complement those mechanisms and the AIPREF vocabulary
+<span>[<a href="#I-D.ietf-aipref-vocab" class="cite xref">I-D.ietf-aipref-vocab</a>]</span>.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-2">The extension structure follows the precedents in <span>[<a href="#RFC8946" class="cite xref">RFC8946</a>]</span> and
+<span>[<a href="#RFC9795" class="cite xref">RFC9795</a>]</span>: claim definitions, SIP authentication and verification
+procedures, and separate IANA registration considerations.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
+<p id="section-1.1-3">TBD: Agree on the boundary between the existing real-time bindings and
+this extension, including which mechanisms are reused.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="conventions-and-definitions">
+</section>
+</div>
+<div id="terminology">
 <section id="section-2">
-      <h2 id="name-conventions-and-definitions">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      <h2 id="name-terminology">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
       </h2>
 <p id="section-2-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">TBD: Define preference originator, preference authority, and APT usage
+in this document, reusing existing SIP and STIR terminology.<a href="#section-2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="security">
+<div id="overview">
 <section id="section-3">
-      <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-overview-of-operation">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-overview-of-operation" class="section-name selfRef">Overview of Operation</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">TBD: Describe preference expression for call data used in LLM training,
+the parties that attach and sign it, and how a receiver obtains and
+evaluates the applicable preferences.<a href="#section-3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="extension">
+<section id="section-4">
+      <h2 id="name-passport-extension">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-passport-extension" class="section-name selfRef">PASSporT Extension</a>
+      </h2>
+<div id="claims">
+<section id="section-4.1">
+        <h3 id="name-passport-type-and-claim-def">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-passport-type-and-claim-def" class="section-name selfRef">PASSporT Type and Claim Definitions</a>
+        </h3>
+<p id="section-4.1-1">TBD: Define the claim names, syntax, and semantics, and determine whether
+a dedicated <code>ppt</code> value or a claims-only profile is appropriate under
+<span><a href="https://rfc-editor.org/rfc/rfc8225#section-8" class="relref">Section 8</a> of [<a href="#RFC8225" class="cite xref">RFC8225</a>]</span>. No new claim or type name is allocated by
+this outline.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="integrity">
+<section id="section-4.2">
+        <h3 id="name-preference-integrity-and-ca">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-preference-integrity-and-ca" class="section-name selfRef">Preference Integrity and Call Binding</a>
+        </h3>
+<p id="section-4.2-1">TBD: Define inline or referenced preference objects, digest inputs,
+scope, and version binding. Distinguish the call signer's assertion
+from the preference issuer's authority over the affected data.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="examples">
+<section id="section-4.3">
+        <h3 id="name-examples">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+        </h3>
+<p id="section-4.3-1">TBD: Add complete PASSporT and SIP examples after the claim definitions
+and integrity rules are agreed.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="sip">
+<section id="section-5">
+      <h2 id="name-use-in-sip">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-use-in-sip" class="section-name selfRef">Use in SIP</a>
+      </h2>
+<p id="section-5-1">The following sections reserve the SIP <span>[<a href="#RFC3261" class="cite xref">RFC3261</a>]</span> procedures for
+authentication and verification services, following <span>[<a href="#RFC8946" class="cite xref">RFC8946</a>]</span> and
+<span>[<a href="#RFC9795" class="cite xref">RFC9795</a>]</span>.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="authentication-service">
+<section id="section-5.1">
+        <h3 id="name-authentication-service-beha">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-authentication-service-beha" class="section-name selfRef">Authentication Service Behavior</a>
+        </h3>
+<p id="section-5.1-1">TBD: Define signer eligibility, PASSporT construction, preference
+attachment, and carriage in the SIP <code>Identity</code> header field.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="verification-service">
+<section id="section-5.2">
+        <h3 id="name-verification-service-behavi">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-verification-service-behavi" class="section-name selfRef">Verification Service Behavior</a>
+        </h3>
+<p id="section-5.2-1">TBD: Define signature and credential validation, preference retrieval,
+binding checks, and handling of unsupported, unavailable, or invalid
+preference information. Distinguish call identity verification from
+preference acceptance and enforcement.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="updates">
+<section id="section-6">
+      <h2 id="name-preference-updates-and-call">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-preference-updates-and-call" class="section-name selfRef">Preference Updates and Call Transitions</a>
+      </h2>
+<p id="section-6-1">TBD: Specify applicability to mid-dialog updates, agent-to-human
+handoffs, and forwarded or transferred calls, including the relationship
+to <span>[<a href="#RFC8946" class="cite xref">RFC8946</a>]</span>. Define freshness, ordering, and supersession without
+treating an actor change as an automatic change to data-use preferences.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana">
-<section id="section-4">
+<section id="section-7">
       <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">TBD: Determine the registrations required by <a href="#claims" class="auto internal xref">Section 4.1</a>. This outline
+does not request allocation of concrete names or values.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<div id="iana-jwt">
+<section id="section-7.1">
+        <h3 id="name-json-web-token-claims">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-json-web-token-claims" class="section-name selfRef">JSON Web Token Claims</a>
+        </h3>
+<p id="section-7.1-1">TBD: Complete the JWT claim registration template for each new claim,
+including its name, description, change controller, and specification
+reference, following the precedents in <span>[<a href="#RFC8946" class="cite xref">RFC8946</a>]</span> and <span>[<a href="#RFC9795" class="cite xref">RFC9795</a>]</span>.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="sec-normative-references">
-<section id="section-5">
-      <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<div id="iana-passport">
+<section id="section-7.2">
+        <h3 id="name-personal-assertion-token-pa">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-personal-assertion-token-pa" class="section-name selfRef">Personal Assertion Token (PASSporT) Extensions</a>
+        </h3>
+<p id="section-7.2-1">TBD: If a new PASSporT type is selected, provide its <code>ppt</code> value and
+specification reference for the PASSporT Extensions registry.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="privacy">
+<section id="section-8">
+      <h2 id="name-privacy-considerations">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
+<p id="section-8-1">TBD: Address preference disclosure, per-participant scope, access to
+referenced objects, and retention of preference evidence with call data.<a href="#section-8-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security">
+<section id="section-9">
+      <h2 id="name-security-considerations">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-9-1">TBD: Address issuer authority, participant consent, replay, downgrade
+and stripping attacks, unauthorized preference changes, and integrity
+of referenced objects. A signature alone does not establish user consent
+or prove that a recipient followed the expressed preferences.<a href="#section-9-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-combined-references">
+<section id="section-10">
+      <h2 id="name-references">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<div id="sec-normative-references">
+<section id="section-10.1">
+        <h3 id="name-normative-references">
+<a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC3261">[RFC3261]</dt>
+        <dd>
+<span class="refAuthor">Rosenberg, J.</span>, <span class="refAuthor">Schulzrinne, H.</span>, <span class="refAuthor">Camarillo, G.</span>, <span class="refAuthor">Johnston, A.</span>, <span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Sparks, R.</span>, <span class="refAuthor">Handley, M.</span>, and <span class="refAuthor">E. Schooler</span>, <span class="refTitle">"SIP: Session Initiation Protocol"</span>, <span class="seriesInfo">RFC 3261</span>, <span class="seriesInfo">DOI 10.17487/RFC3261</span>, <time datetime="2002-07" class="refDate">July 2002</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3261">https://www.rfc-editor.org/rfc/rfc3261</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-    <dd>
+        <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC8224">[RFC8224]</dt>
+        <dd>
+<span class="refAuthor">Peterson, J.</span>, <span class="refAuthor">Jennings, C.</span>, <span class="refAuthor">Rescorla, E.</span>, and <span class="refAuthor">C. Wendt</span>, <span class="refTitle">"Authenticated Identity Management in the Session Initiation Protocol (SIP)"</span>, <span class="seriesInfo">RFC 8224</span>, <span class="seriesInfo">DOI 10.17487/RFC8224</span>, <time datetime="2018-02" class="refDate">February 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8224">https://www.rfc-editor.org/rfc/rfc8224</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8225">[RFC8225]</dt>
+      <dd>
+<span class="refAuthor">Wendt, C.</span> and <span class="refAuthor">J. Peterson</span>, <span class="refTitle">"PASSporT: Personal Assertion Token"</span>, <span class="seriesInfo">RFC 8225</span>, <span class="seriesInfo">DOI 10.17487/RFC8225</span>, <time datetime="2018-02" class="refDate">February 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8225">https://www.rfc-editor.org/rfc/rfc8225</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 </dl>
+</section>
+</div>
+<div id="sec-informative-references">
+<section id="section-10.2">
+        <h3 id="name-informative-references">
+<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.altanai-aipref-realtime-protocol-bindings">[I-D.altanai-aipref-realtime-protocol-bindings]</dt>
+        <dd>
+<span class="refAuthor">Bisht, A.</span>, <span class="refTitle">"AI Preferences for Real-Time Protocol Bindings"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-altanai-aipref-realtime-protocol-bindings-01</span>, <time datetime="2026-08-04" class="refDate">4 August 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-altanai-aipref-realtime-protocol-bindings-01">https://datatracker.ietf.org/doc/html/draft-altanai-aipref-realtime-protocol-bindings-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-aipref-vocab">[I-D.ietf-aipref-vocab]</dt>
+        <dd>
+<span class="refAuthor">Keller, P.</span> and <span class="refAuthor">M. Thomson</span>, <span class="refTitle">"A Vocabulary For Expressing AI Usage Preferences"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-aipref-vocab-08</span>, <time datetime="2026-09-13" class="refDate">13 September 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-aipref-vocab-08">https://datatracker.ietf.org/doc/html/draft-ietf-aipref-vocab-08</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8946">[RFC8946]</dt>
+        <dd>
+<span class="refAuthor">Peterson, J.</span>, <span class="refTitle">"Personal Assertion Token (PASSporT) Extension for Diverted Calls"</span>, <span class="seriesInfo">RFC 8946</span>, <span class="seriesInfo">DOI 10.17487/RFC8946</span>, <time datetime="2021-02" class="refDate">February 2021</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8946">https://www.rfc-editor.org/rfc/rfc8946</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9795">[RFC9795]</dt>
+      <dd>
+<span class="refAuthor">Wendt, C.</span> and <span class="refAuthor">J. Peterson</span>, <span class="refTitle">"Personal Assertion Token (PASSporT) Extension for Rich Call Data"</span>, <span class="seriesInfo">RFC 9795</span>, <span class="seriesInfo">DOI 10.17487/RFC9795</span>, <time datetime="2025-07" class="refDate">July 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9795">https://www.rfc-editor.org/rfc/rfc9795</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
 </section>
 </div>
 <div id="acknowledgments">
@@ -1225,7 +1482,10 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">The author thanks Jon Peterson for suggesting exploration of a PASSporT
+extension for AI usage preferences associated with call data used in
+LLM training.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">TBD: Additional acknowledgments.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
@@ -1234,11 +1494,11 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <a href="#name-authors-address" class="section-name selfRef">Author's Address</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">Your Name Here</span></div>
-<div dir="auto" class="left"><span class="org">Your Organization Here</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Altanai Bisht</span></div>
+<div dir="auto" class="left"><span class="org">Cisco Meraki</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:your.email@example.com" class="email">your.email@example.com</a>
+<a href="mailto:altanai@outlook.com" class="email">altanai@outlook.com</a>
 </div>
 </address>
 </section>

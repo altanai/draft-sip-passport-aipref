@@ -1,0 +1,285 @@
+
+
+
+
+STIR                                                            A. Bisht
+Internet-Draft                                              Cisco Meraki
+Intended status: Informational                          23 November 2026
+Expires: 27 May 2027
+
+
+ Personal Assertion Token (PASSporT) Extension for AI Usage Preferences
+                              in SIP Calls
+                draft-altanai-sip-passport-aipref-latest
+
+Abstract
+
+   This document outlines a potential Personal Assertion Token
+   (PASSporT) extension for conveying AI usage preferences associated
+   with SIP calls, including preferences concerning the use of call data
+   for training large language models (LLMs).  It explores binding
+   preference information to authenticated call identity.  This initial
+   discussion outline leaves the extension design and verification
+   procedures to be determined (TBD).
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://altanai.github.io/draft-sip-passport-aipref/draft-altanai-
+   sip-passport-aipref.html.  Status information for this document may
+   be found at https://datatracker.ietf.org/doc/draft-altanai-sip-
+   passport-aipref/.
+
+   Discussion of this document takes place on the stir Working Group
+   mailing list (mailto:stir@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/stir/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/stir/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/altanai/draft-sip-passport-aipref.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 27 May 2027.
+
+Copyright Notice
+
+   Copyright (c) 2026 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+     1.1.  Relationship to Existing Work
+   2.  Terminology
+   3.  Overview of Operation
+   4.  PASSporT Extension
+     4.1.  PASSporT Type and Claim Definitions
+     4.2.  Preference Integrity and Call Binding
+     4.3.  Examples
+   5.  Use in SIP
+     5.1.  Authentication Service Behavior
+     5.2.  Verification Service Behavior
+   6.  Preference Updates and Call Transitions
+   7.  IANA Considerations
+     7.1.  JSON Web Token Claims
+     7.2.  Personal Assertion Token (PASSporT) Extensions
+   8.  Privacy Considerations
+   9.  Security Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
+   Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   PASSporT [RFC8225] and the STIR authentication procedures for SIP
+   [RFC8224] provide a basis for associating signed information with
+   calls.  This document explores applying that model to AI usage
+   preferences for call data.  The proposed extension is outlined in
+   Section 4, with SIP procedures reserved in Section 5.
+
+   TBD: Refine the problem statement, intended status, and initial use
+   cases with contributors.
+
+1.1.  Relationship to Existing Work
+
+   AI Preferences for Real-Time Protocol Bindings
+   [I-D.altanai-aipref-realtime-protocol-bindings] describes AI
+   Preference Tokens (APTs), the SIP AI-Pref header field, SDP bindings,
+   and preference updates during a session.  This document explores a
+   specific PASSporT binding that could complement those mechanisms and
+   the AIPREF vocabulary [I-D.ietf-aipref-vocab].
+
+   The extension structure follows the precedents in [RFC8946] and
+   [RFC9795]: claim definitions, SIP authentication and verification
+   procedures, and separate IANA registration considerations.
+
+   TBD: Agree on the boundary between the existing real-time bindings
+   and this extension, including which mechanisms are reused.
+
+2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+   TBD: Define preference originator, preference authority, and APT
+   usage in this document, reusing existing SIP and STIR terminology.
+
+3.  Overview of Operation
+
+   TBD: Describe preference expression for call data used in LLM
+   training, the parties that attach and sign it, and how a receiver
+   obtains and evaluates the applicable preferences.
+
+4.  PASSporT Extension
+
+4.1.  PASSporT Type and Claim Definitions
+
+   TBD: Define the claim names, syntax, and semantics, and determine
+   whether a dedicated ppt value or a claims-only profile is appropriate
+   under Section 8 of [RFC8225].  No new claim or type name is allocated
+   by this outline.
+
+4.2.  Preference Integrity and Call Binding
+
+   TBD: Define inline or referenced preference objects, digest inputs,
+   scope, and version binding.  Distinguish the call signer's assertion
+   from the preference issuer's authority over the affected data.
+
+4.3.  Examples
+
+   TBD: Add complete PASSporT and SIP examples after the claim
+   definitions and integrity rules are agreed.
+
+5.  Use in SIP
+
+   The following sections reserve the SIP [RFC3261] procedures for
+   authentication and verification services, following [RFC8946] and
+   [RFC9795].
+
+5.1.  Authentication Service Behavior
+
+   TBD: Define signer eligibility, PASSporT construction, preference
+   attachment, and carriage in the SIP Identity header field.
+
+5.2.  Verification Service Behavior
+
+   TBD: Define signature and credential validation, preference
+   retrieval, binding checks, and handling of unsupported, unavailable,
+   or invalid preference information.  Distinguish call identity
+   verification from preference acceptance and enforcement.
+
+6.  Preference Updates and Call Transitions
+
+   TBD: Specify applicability to mid-dialog updates, agent-to-human
+   handoffs, and forwarded or transferred calls, including the
+   relationship to [RFC8946].  Define freshness, ordering, and
+   supersession without treating an actor change as an automatic change
+   to data-use preferences.
+
+7.  IANA Considerations
+
+   TBD: Determine the registrations required by Section 4.1.  This
+   outline does not request allocation of concrete names or values.
+
+7.1.  JSON Web Token Claims
+
+   TBD: Complete the JWT claim registration template for each new claim,
+   including its name, description, change controller, and specification
+   reference, following the precedents in [RFC8946] and [RFC9795].
+
+7.2.  Personal Assertion Token (PASSporT) Extensions
+
+   TBD: If a new PASSporT type is selected, provide its ppt value and
+   specification reference for the PASSporT Extensions registry.
+
+8.  Privacy Considerations
+
+   TBD: Address preference disclosure, per-participant scope, access to
+   referenced objects, and retention of preference evidence with call
+   data.
+
+9.  Security Considerations
+
+   TBD: Address issuer authority, participant consent, replay, downgrade
+   and stripping attacks, unauthorized preference changes, and integrity
+   of referenced objects.  A signature alone does not establish user
+   consent or prove that a recipient followed the expressed preferences.
+
+10.  References
+
+10.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC3261]  Rosenberg, J., Schulzrinne, H., Camarillo, G., Johnston,
+              A., Peterson, J., Sparks, R., Handley, M., and E.
+              Schooler, "SIP: Session Initiation Protocol", RFC 3261,
+              DOI 10.17487/RFC3261, July 2002,
+              <https://www.rfc-editor.org/rfc/rfc3261>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC8224]  Peterson, J., Jennings, C., Rescorla, E., and C. Wendt,
+              "Authenticated Identity Management in the Session
+              Initiation Protocol (SIP)", RFC 8224,
+              DOI 10.17487/RFC8224, February 2018,
+              <https://www.rfc-editor.org/rfc/rfc8224>.
+
+   [RFC8225]  Wendt, C. and J. Peterson, "PASSporT: Personal Assertion
+              Token", RFC 8225, DOI 10.17487/RFC8225, February 2018,
+              <https://www.rfc-editor.org/rfc/rfc8225>.
+
+10.2.  Informative References
+
+   [I-D.altanai-aipref-realtime-protocol-bindings]
+              Bisht, A., "AI Preferences for Real-Time Protocol
+              Bindings", Work in Progress, Internet-Draft, draft-
+              altanai-aipref-realtime-protocol-bindings-01, 4 August
+              2026, <https://datatracker.ietf.org/doc/html/draft-
+              altanai-aipref-realtime-protocol-bindings-01>.
+
+   [I-D.ietf-aipref-vocab]
+              Keller, P. and M. Thomson, "A Vocabulary For Expressing AI
+              Usage Preferences", Work in Progress, Internet-Draft,
+              draft-ietf-aipref-vocab-08, 13 September 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-aipref-
+              vocab-08>.
+
+   [RFC8946]  Peterson, J., "Personal Assertion Token (PASSporT)
+              Extension for Diverted Calls", RFC 8946,
+              DOI 10.17487/RFC8946, February 2021,
+              <https://www.rfc-editor.org/rfc/rfc8946>.
+
+   [RFC9795]  Wendt, C. and J. Peterson, "Personal Assertion Token
+              (PASSporT) Extension for Rich Call Data", RFC 9795,
+              DOI 10.17487/RFC9795, July 2025,
+              <https://www.rfc-editor.org/rfc/rfc9795>.
+
+Acknowledgments
+
+   The author thanks Jon Peterson for suggesting exploration of a
+   PASSporT extension for AI usage preferences associated with call data
+   used in LLM training.
+
+   TBD: Additional acknowledgments.
+
+Author's Address
+
+   Altanai Bisht
+   Cisco Meraki
+   Email: altanai@outlook.com
