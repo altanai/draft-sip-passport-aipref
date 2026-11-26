@@ -1,0 +1,92 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2026-11-26T00:08:57.314979+00:00",
+  "repo": "altanai/draft-sip-passport-aipref",
+  "labels": [
+    {
+      "name": "accessibility",
+      "description": "Barrier affecting people with disabilities",
+      "color": "f143ab"
+    },
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOV5SrGc8AAAABh7TVpg",
+      "title": "Define an APT binding claim for the initial SIP INVITE",
+      "url": "https://github.com/altanai/draft-sip-passport-aipref/issues/1",
+      "state": "OPEN",
+      "author": "altanai",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The SIP `AI-Pref` header already provides a way to reference an AI Preference Token (APT). Define how the STIR Authentication Service takes that reference from the initial `INVITE` and adds it to the signed PASSporT payload. Start with one HTTPS-referenced APT and an optional claim in a full-form PASSporT, following the Rich Call Data claims-only precedent. [Real-Time Bindings \u00a75.1](https://datatracker.ietf.org/doc/html/draft-altanai-aipref-realtime-protocol-bindings#section-5.1), [RFC 9795 \u00a713](https://www.rfc-editor.org/rfc/rfc9795.html#section-13)\n\n- [ ] Specify how the Authentication Service obtains the serialized APT, computes its digest, adds the claim, and signs the PASSporT carried in the SIP `Identity` header.\n- [ ] Define the candidate claim fields (APT identifier, HTTPS URI, version, scope, and digest). Specify exactly which bytes are hashed, how the digest is encoded, and which fields must match the `AI-Pref` header.\n- [ ] Define what binds the claim to this particular `INVITE`. Evaluate whether `orig`, `dest`, and `iat` are sufficient or whether the binding also needs request context such as `Call-ID` and the `From` tag.\n- [ ] Specify what the STIR signer attests about the attachment and how the receiver separately verifies the APT issuer\u2019s authority over the scoped data.",
+      "createdAt": "2026-11-24T00:25:10Z",
+      "updatedAt": "2026-11-24T00:25:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOV5SrGc8AAAABh7TuGA",
+      "title": "Add an end-to-end no-training example for call audio",
+      "url": "https://github.com/altanai/draft-sip-passport-aipref/issues/2",
+      "state": "OPEN",
+      "author": "altanai",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Use the binding from #1 to show a caller expressing `train-ai=n` for a specified audio stream from the call. The example should show how the receiving side verifies the preference during call setup and associates the result with any recording of that stream. [AIPREF Vocabulary \u00a7\u00a74.1, 6](https://datatracker.ietf.org/doc/html/draft-ietf-aipref-vocab#section-4.1), [Real-Time Bindings \u00a79.1.5](https://datatracker.ietf.org/doc/html/draft-altanai-aipref-realtime-protocol-bindings#section-9.1.5)\n\n- [ ] Include the APT bytes, expected digest, SIP `INVITE` with `AI-Pref` and `Identity`, and decoded PASSporT payload so an implementer can reproduce the check.\n- [ ] Show the receiver verifying the STIR signature, matching the reference and digest, and checking the APT issuer and audio scope before passing the verified preference to the recording application.\n- [ ] Document outcomes for a valid binding, changed APT bytes, a mismatched scope or version, an unauthorized issuer, and a missing or unsupported claim. Report call identity and preference verification separately. A missing or unsupported preference leaves training permission unknown.",
+      "createdAt": "2026-11-24T00:25:41Z",
+      "updatedAt": "2026-11-24T00:25:41Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": []
+}
